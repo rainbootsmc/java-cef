@@ -79,7 +79,6 @@ jobs:
       - uses: MatteoH2O1999/setup-python@v2
         with:
           python-version: '2.7'
-          cache: pip
       - run: |
           brew install ninja
           brew install coreutils
