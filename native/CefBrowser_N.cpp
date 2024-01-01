@@ -933,6 +933,7 @@ void create(std::shared_ptr<JNIObjectsForCreate> objs,
 
   CefBrowserSettings settings;
 
+  settings.windowless_frame_rate = 120;
   if (transparent == JNI_FALSE) {
     // Specify an opaque background color (white) to disable transparency.
     settings.background_color = CefColorSetARGB(255, 255, 255, 255);
@@ -1385,6 +1386,7 @@ Java_org_cef_browser_CefBrowser_1N_N_1SetFocus(JNIEnv* env,
                                                jboolean enable) {
   CefRefPtr<CefBrowser> browser = JNI_GET_BROWSER_OR_RETURN(env, obj);
   browser->GetHost()->SetFocus(enable != JNI_FALSE);
+  browser->GetHost()->SetWindowlessFrameRate(120);
 }
 
 JNIEXPORT void JNICALL
@@ -1392,6 +1394,7 @@ Java_org_cef_browser_CefBrowser_1N_N_1SetWindowVisibility(JNIEnv* env,
                                                           jobject obj,
                                                           jboolean visible) {
   CefRefPtr<CefBrowser> browser = JNI_GET_BROWSER_OR_RETURN(env, obj);
+  browser->GetHost()->SetWindowlessFrameRate(120);
 
 #if defined(OS_MACOSX)
   if (!browser->GetHost()->IsWindowRenderingDisabled()) {
