@@ -1549,6 +1549,8 @@ Java_org_cef_browser_CefBrowser_1N_N_1WasResized(JNIEnv* env,
     }
   }
 #endif
+
+  browser->GetHost()->SetWindowlessFrameRate(120);
 }
 
 JNIEXPORT void JNICALL
